@@ -1,4 +1,5 @@
 local tabPages = require('bufferline.tabpages')
+local util = require('bufferline.utils')
 
 local M = {}
 
@@ -25,7 +26,7 @@ function M.on_load(tabNames)
   local tabIndex = vim.api.nvim_win_get_tabpage(0)
   for _, _ in ipairs(tabNames) do
     local tabName = tabNames[tabIndex]
-    tabPages.rename_tab(tabIndex, tabName)
+    tabPages.rename_tab(tabIndex, util.stripString(tabName))
     tabIndex = tabIndex+1
     if tabIndex > #tabNames then tabIndex = 1 end
     vim.cmd('tabnext')
