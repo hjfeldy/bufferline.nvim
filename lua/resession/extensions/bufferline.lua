@@ -13,7 +13,6 @@ function M.on_save()
         function(comp) return comp.attr ~= nil end,
         components
       )[1]
-      print('Saving tab ' .. #tabNames+1 .. ' as ' .. titleComponent.text)
       tabNames[#tabNames+1] = titleComponent.text
   end
   return tabNames
